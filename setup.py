@@ -58,7 +58,11 @@ setup(
     #
     # This field corresponds to the "Home-Page" metadata field:
     # https://packaging.python.org/specifications/core-metadata/#home-page-optional
+<<<<<<< HEAD
     #url='https://github.com/pypa/sampleproject',  # Optional
+=======
+    url='https://github.com/vigneras/verlanize',  # Optional
+>>>>>>> Refactor - prepare for release
 
     # This should be your name or the name of the organization which owns the
     # project.
@@ -173,9 +177,9 @@ setup(
     # maintainers, and where to support the project financially. The key is
     # what's used to render the link text on PyPI.
     project_urls={  # Optional
-        'Bug Reports': 'pierre.vigneras@gmail.com',
+        'Bug Reports': 'https://github.com/vigneras/verlanize/issues',
         'Funding': 'https://paypal.me/pierrevigneras',
         'Say Thanks!': 'https://saythanks.io/to/vigneras',
-        'Source': 'private for now',
+        'Source': 'https://github.com/vigneras/verlanize',
     },
 )
