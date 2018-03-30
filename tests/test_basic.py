@@ -36,13 +36,27 @@ class TestVerlanizeCase(unittest.TestCase):
         self.assertIsNotNone(words)
         self.assertEqual('tarpé', result)
         self.assertEqual(1, len(words))
-      
+    
     def test_simple_sentence(self):
+        result, words = verlanize.verlanize('Une femme jolie.')
+        self.assertIsNotNone(result)
+        self.assertIsNotNone(words)
+        self.assertEqual('Une meuf jolie.', result)
+        self.assertEqual(1, len(words))
+      
+    def test_many_words(self):
+        result, words = verlanize.verlanize('pétard planqué')
+        self.assertIsNotNone(result)
+        self.assertIsNotNone(words)
+        self.assertEqual('tarpé képlan', result)
+        self.assertEqual(2, len(words))
+    
+    def test_simple_sentence_many_words(self):
         result, words = verlanize.verlanize('Un pétard mouillé.')
         self.assertIsNotNone(result)
         self.assertIsNotNone(words)
-        self.assertEqual('Un tarpé mouillé.', result)
-        self.assertEqual(1, len(words))
+        self.assertEqual('Un tarpé yémou.', result)
+        self.assertEqual(2, len(words))
     
     def test_upcase_word(self):
         result, words = verlanize.verlanize('FEMME')
