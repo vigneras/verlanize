@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''
 Created on Mar 27, 2018
 
@@ -11,6 +12,10 @@ LOGGER = logging.getLogger()
 LOGGER.setLevel(logging.DEBUG)
 
 class TestVerlanizeCase(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        verlanize.init()
 
     def test_none(self):
         result, words = verlanize.verlanize(None)
@@ -31,14 +36,22 @@ class TestVerlanizeCase(unittest.TestCase):
         self.assertIsNotNone(words)
         self.assertEqual('tarpé', result)
         self.assertEqual(1, len(words))
-        
-#     def test_upcase_word(self):
-#         result, words = verlanize.verlanize('FEMME')
-#         self.assertIsNotNone(result)
-#         self.assertIsNotNone(words)
-#         self.assertEqual('MEUF', result)
-#         self.assertEqual(1, len(words))
+      
+    def test_simple_sentence(self):
+        result, words = verlanize.verlanize('Un pétard mouillé.')
+        self.assertIsNotNone(result)
+        self.assertIsNotNone(words)
+        self.assertEqual('Un tarpé mouillé.', result)
+        self.assertEqual(1, len(words))
+    
+    def test_upcase_word(self):
+        result, words = verlanize.verlanize('FEMME')
+        self.assertIsNotNone(result)
+        self.assertIsNotNone(words)
+        self.assertEqual('MEUF', result)
+        self.assertEqual(1, len(words))
      
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.DEBUG)
     unittest.main()

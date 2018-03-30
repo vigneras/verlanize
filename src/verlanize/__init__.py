@@ -94,6 +94,24 @@ verlan_words = {
     'voiture': 'turvoi',
 }
 
+verlan_re = dict()
+
+def init():
+    for word in verlan_words:
+        # Normal case
+        pattern = r'\b%s\b' % word
+        prog = re.compile(pattern)
+        verlan_re[prog] = verlan_words[word]
+        
+        # UPPER case
+        pattern = r'\b%s\b' % word.upper()
+        prog = re.compile(pattern)
+        verlan_re[prog] = verlan_words[word].upper()
+        
+        # Title case
+        pattern = r'\b%s\b' % word.title()
+        prog = re.compile(pattern)
+        verlan_re[prog] = verlan_words[word].title()
 
 
 def verlanize(text):
@@ -101,12 +119,9 @@ def verlanize(text):
         return (None, [])
     verlanized = []
     temp = text
-    for word in verlan_words:
-        pattern = u'\(?' + word + '[\s,.!?;)]?'
-        LOGGER.debug("regexp: %s", pattern)
-        prog = re.compile(pattern, re.IGNORECASE)
-        result = prog.match(temp)
-        if prog.match(temp):
-            verlanized.append(word)
-            temp = prog.sub(verlan_words[word], temp)
+    for prog in verlan_re:
+        match = prog.search(temp) 
+        if match:
+            verlanized.append(match.group())
+            temp = prog.sub(verlan_re[prog], temp)
     return [temp, verlanized]
