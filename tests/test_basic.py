@@ -30,6 +30,17 @@ class TestVerlanizeCase(unittest.TestCase):
         self.assertEqual('meuf', result)
         self.assertEqual(1, len(words))
         
+    def test_same_words(self):
+        result, words = verlanize.verlanize('femme femme, femme. femme; '
+                                            'femme? femme! '
+                                            '(femme) (femme femme)')
+        self.assertIsNotNone(result)
+        self.assertIsNotNone(words)
+        self.assertEqual('meuf meuf, meuf. meuf; '
+                         'meuf? meuf! (meuf) '
+                         '(meuf meuf)', result)
+        self.assertEqual(9, len(words))
+
     def test_accent_word(self):
         result, words = verlanize.verlanize('pétard')
         self.assertIsNotNone(result)
@@ -64,7 +75,18 @@ class TestVerlanizeCase(unittest.TestCase):
         self.assertIsNotNone(words)
         self.assertEqual('MEUF', result)
         self.assertEqual(1, len(words))
-     
+        
+    def test_simple_word_with_matcher(self):
+        def matcher(match, verlan, x_sampa):
+            return ''.join([match.string[:match.start()], 
+                            'X_SAMPA',
+                            match.string[match.end():]])
+        
+        result, words = verlanize.verlanize('Un américain à Paris', matcher) 
+        self.assertIsNotNone(result)
+        self.assertIsNotNone(words)
+        self.assertEqual('Un X_SAMPA à Paris', result)
+        self.assertEqual(1, len(words))
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
