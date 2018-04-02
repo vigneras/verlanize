@@ -13,104 +13,263 @@ LOGGER.setLevel(logging.DEBUG)
 # to display in an editor
 verlan_words = {
     'américain': ['cainri', 'kE~.Ri'],
-    'arabe': ['rebeu', None],
-    'brancher': ['chébrans', None],
-    'branché': ['chébrans', None],
-    'branchée': ['chébrans', None],
-    'branchées': ['chébrans', None],
-    'bête': ['teubé', None],
-    'carotter': ['rot-ca', None],
-    'carotté': ['rot-ca', None],
-    'chaud': ['auch', None],
-    'cher': ['reuch', None],
-    'chien': ['iench', None],
-    'choper': ['pécho', None],
-    'chopé': ['pécho', None],
-    'chopés': ['pécho', None],
-    'chopée': ['pécho', None],
-    'chopées': ['pécho', None],
-    'cigarette': ['garetci', None],
-    'cité': ['téci', None],
-    'cités': ['téci', None],
-    'comme ça': ['ça kom', None],
-    'dingue': ['gueudin', None],
-    'dingues': ['gueudin', None],
-    'disque': ['skeud', None],
-    'disques': ['skeud', None],
-    'défoncer': ['fonsdé', None],
-    'défoncé': ['fonsdé', None],
-    'défoncés': ['fonsdé', None],
-    'défoncée': ['fonsdé', None],
-    'défoncées': ['fonsdé', None],
-    'énervé': ['vénèr', None],
-    'femme': ['meuf', None],
-    'flasher': ['chéfla', None],
-    'flic': ['keuf', None],
-    'fou': ['ouf', None],
-    'français': ['céfran', None],
-    'frère': ['reuf', None],
-    'fumer': ['méfu', None],
-    'fête': ['teuf', None],
-    'gentil': ['tigen', None],
-    'gramme': ['meug', None],
+    'américains': ['cainris', 'kE~.Ri'],
+    
+    'arabe': ['rebeu', 'R@.b2'],
+    'arabes': ['rebeus', 'R@.b2'],
+    
+    'brancher': ['chébrans', 'SebRA~'],
+    'branché': ['chébrans', 'SebRA~'],
+    'branchée': ['chébrans', 'SebRA~'],
+    'branchées': ['chébrans', 'SebRA~'],
+    
+    'bête': ['teubé', 't9be'],
+    'bêtes': ['teubés', 't9be'],
+    
+    'carotter': ['rot-ca', 'ROtka'],
+    'carotté': ['rot-ca', 'ROtka'],
+    
+    'chaud': ['auch', 'oS'],
+    'chauds': ['auchs', 'oS'],
+    
+    'cher': ['reuch', 'R2S'],
+    'chers': ['reuchs', 'R2S'],
+    'chère': ['reuchs', 'R2S'],
+    'chères': ['reuchs', 'R2S'],
+    
+    'chien': ['iench', 'jE~S'],
+    'chiens': ['ienchs', 'jE~S'],
+    
+    'choper': ['pécho', 'pe.SO'],
+    'chopé': ['pécho', 'pe.SO'],
+    'chopés': ['pécho', 'pe.SO'],
+    'chopée': ['pécho', 'pe.SO'],
+    'chopées': ['pécho', 'pe.SO'],
+    
+    'cigarette': ['garetci', 'gaREtsi'],
+    'cigarettes': ['garetci', 'gaREtsi'],
+    
+    'cité': ['téci', 'te.si'],
+    'cités': ['téci', 'te.si'],
+    
+    'comme ça': ['ça kom', 'sa kOm'],
+    
+    'dingue': ['gueudin', 'g2dE~'],
+    'dingues': ['gueudin', 'g2dE~'],
+    
+    'disque': ['skeud', 'sk2d'],
+    'disques': ['skeud', 'sk2d'],
+    
+    'défoncer': ['fonsdé', 'fO~sde'],
+    'défoncé': ['fonsdé', 'fO~sde'],
+    'défoncés': ['fonsdé', 'fO~sde'],
+    'défoncée': ['fonsdé', 'fO~sde'],
+    'défoncées': ['fonsdé', 'fO~sde'],
+    
+    'énervé': ['vénèr', 'venER'],
+    'énervée': ['vénèr', 'venER'],
+    'énervés': ['vénèr', 'venER'],
+    'énervées': ['vénèr', 'venER'],
+    
+    'femme': ['meuf', 'm9f'],
+    'femmes': ['meufs', 'm9f'],
+    
+    'flasher': ['chéfla', 'Seflaa'],
+    'flashé': ['chéfla', 'Seflaa'],
+    'flashée': ['chéfla', 'Seflaa'],
+    'flashés': ['chéfla', 'Seflaa'],
+    'flashées': ['chéfla', 'Seflaa'],
+    
+    'flic': ['keuf', 'k9f'],
+    'flics': ['keufs', 'k9f'],
+    
+    'fou': ['ouf', 'uf'],
+    'fous': ['oufs', 'uf'],
+    
+    'français': ['céfran', 'se.fRA~'],
+    
+    'frère': ['reuf', 'R9f'],
+    'frères': ['reuf', 'R9f'],
+    
+    'fumer': ['méfu', 'me.fy'],
+    'fumé': ['méfu', 'me.fy'],
+    'fumée': ['méfu', 'me.fy'],
+    'fumés': ['méfu', 'me.fy'],
+    'fumées': ['méfu', 'me.fy'],
+    
+    'fête': ['teuf', 't9f'],
+    'fêtes': ['teufs', 't9f'],
+    
+    'gentil': ['tigen', 'tiZA~'],
+    'gentils': ['tigens', 'tiZA~'],
+    
+    'gramme': ['meug', 'm3g'],
+    'grammes': ['meug', 'm3g'],
+    
     'grave': ['veugra', 'v@.gRa'],
-    'herbe': ['beuh', None],
-    'je ne sais pas': ['Ché ap', None],
-    'joint': ['oinj', None],
-    'juif': ['feuj', None],
-    'louche': ['cheulou', None],
-    'lourd': ['relou', None],
-    'manger': ['géman', None],
-    'mate': ['téma', None],
-    'mater': ['téma', None],
-    'mec': ['keum', None],
-    'mecs': ['keums', None],
-    'merde': ['deumer', None],
-    'moche': ['cheum', None],
-    'moches': ['cheums', None],
-    'moi': ['wam', None],
-    'monnaie': ['némo', None],
-    'mouche': ['cheumou', None],
-    'mouillé': ['yémou', None],
-    'mouillés': ['yémous', None],
-    'mouillées': ['yémous', None],
-    'musique': ['zicmu', None],
-    'mère': ['reum', None],
-    'méchant': ['chan-mé', None],
-    'métro': ['tromé', None],
-    'nez': ['zen', None],
-    'noir': ['renoi', None],
-    'pakistanais': ['kospa', None],
-    'pakos': ['kospa', None],
-    'parents': ['rempa', None],
-    'petit': ['tipeu', None],
-    'photo': ['tofo', None],
-    'pied': ['ièp', None],
-    'planqué': ['képlan', None],
-    'planqués': ['képlans', None],
-    'planquées': ['képlans', None],
-    'pompes': ['peupon', None],
-    'pourri': ['ripou', None],
-    'pute': ['teupu', None],
-    'père': ['reup', None],
-    'pétard': ['tarpé', None],
-    'pétasse': ['tasspé', None],
-    'rage': ['geura', None],
-    'rap': ['peura', None],
-    'ricain': ['cainri', None],
-    'rigoler': ['golri', None],
-    'sec': ['keussé', None],
-    'sein': ['eins', None],
-    'shit': ['teuch', None],
-    'soeur': ['reus', None],
-    'soirée': ['réssoi', None],
-    'toi': ['wat', None],
-    'toubab': ['babtou', None],
-    'triper': ['pétri', None],
-    'truc': ['keutru', None],
-    'vas-y': ['ziva', None],
-    'voiture': ['turvoi', None],
+    'graves': ['veugra', 'v@.gRa'],
+    
+    'herbe': ['beuh', 'b2'],
+    'herbes': ['beuh', 'b2'],
+    
+    'je ne sais pas': ['Ché ap', 'Se Ap'],
+    
+    'joint': ['oinj', 'wE~Z'],
+    'joints': ['oinj', 'wE~Z'],
+    
+    'juif': ['feuj', 'f2Z~'],
+    'juifs': ['feuj', 'f2Z~'],
+    
+    'louche': ['cheulou', 'S@.luu'],
+    'louches': ['cheulou', 'S@.luu'],
+    
+    'lourd': ['relou', 'R@.lu'],
+    'lourds': ['relous', 'R@.lu'],
+    'lourde': ['relou', 'R@.lu'],
+    'lourdes': ['relous', 'R@.lu'],
+    
+    'manger': ['géman', 'ZemA~'],
+    'mangé': ['géman', 'ZemA~'],
+    'mangés': ['géman', 'ZemA~'],
+    'mangée': ['géman', 'ZemA~'],
+    'mangées': ['géman', 'ZemA~'],
+    
+    'mater': ['téma', 'tema'],
+    'maté': ['téma', 'tema'],
+    'matée': ['téma', 'tema'],
+    'matés': ['téma', 'tema'],
+    'matées': ['téma', 'tema'],
+    
+    'mec': ['keum', 'k9m'],
+    'mecs': ['keums', 'k9m'],
+
+    'merde': ['deumer', 'd2mER'],
+    'merdes': ['deumers', 'd2mER'],
+
+    'merci': ['cimer', 'simER~'],
+
+    'moche': ['cheum', 'S9m'],
+    'moches': ['cheums', 'S9m'],
+
+    'moi': ['wam', 'wam'],
+
+    'monnaie': ['némo', 'nemo'],
+    'monnaies': ['némos', 'nemo'],
+
+    'mouche': ['cheumou', 'S@mu'],
+    'mouches': ['cheumous', 'S@mu'],
+
+    'mouillé': ['yémou', 'jemu'],
+    'mouillés': ['yémous', 'jemu'],
+    'mouillées': ['yémous', 'jemu'],
+
+    'musique': ['zicmu', 'zik.my'],
+    'musiques': ['zicmus', 'zik.my'],
+
+    'mère': ['reum', 'R2~m'],
+    'mères': ['reums', 'R2~m'],
+
+    'méchant': ['chan-mé', 'SA~.mee'],
+    'méchants': ['chan-més', 'SA~.mee'],
+
+    'métro': ['tromé', 'tRo.mee'],
+    'métros': ['tromés', 'tRo.mee'],
+
+    'nez': ['zen', 'zEn'],
+
+    'noir': ['renoi', 'R@.nwa'],
+    'noirs': ['renois', 'R@.nwa'],
+
+    'pakos': ['kospa', 'kospa'],
+
+    'parents': ['rempa', 'RA~pa'],
+    'parents': ['rempas', 'RA~pa'],
+
+    'petit': ['tipeu', 'tip2'],
+    'petits': ['tipeu', 'tip2'],
+
+    'photo': ['tofo', 'tofo'],
+    'photos': ['tofos', 'tofo'],
+
+    'pied': ['ièp', 'jE.p'],
+    'pieds': ['ièps', 'jE.p'],
+
+    'planqué': ['képlan', 'keplA~.'],
+    'planqués': ['képlans', 'keplA~.'],
+    'planquées': ['képlans', 'keplA~.'],
+
+    'pompe': ['peupon', 'p2pO~'],
+    'pompes': ['peupon', 'p2pO~'],
+
+    'pomper': ['pépon', 'pepO~'],
+    'pompé': ['pépon', 'pepO~'],
+    'pompée': ['pépon', 'pepO~'],
+    'pompés': ['pépon', 'pepO~'],
+    'pompées': ['pépon', 'pepO~'],
+
+    'pourri': ['ripou', 'Ri.pu'],
+    'pourris': ['ripoux', 'Ri.pu'],
+
+    'pute': ['teupu', 't2.py'],
+    'putes': ['teupus', 't2.py'],
+
+    'père': ['reup', 'R9p'],
+    'pères': ['reups', 'R9p'],
+
+    'pétard': ['tarpé', 'taR.pe'],
+    'pétards': ['tarpés', 'taR.pe'],
+
+    'pétasse': ['tasspé', 'tas.pe'],
+    'pétasses': ['tasspés', 'tas.pe'],
+
+    'rage': ['geura', 'Z2Ra'],
+    'rages': ['geuras', 'Z2Ra'],
+
+    'rap': ['peura', 'p@rA'],
+
+    'ricain': ['cainri', 'kE~.Ri'],
+    'ricains': ['cainris', 'kE~.Ri'],
+
+    'rigoler': ['golri', 'gOl.Ri'],
+    'rigolé': ['golri', 'gOl.Ri'],
+    'rigolée': ['golrie', 'gOl.Ri'],
+    'rigolés': ['golris', 'gOl.Ri'],
+    'rigolées': ['golries', 'gOl.Ri'],
+
+    'sec': ['keussé', 'k9s'],
+    'secs': ['keussés', 'k9s'],
+
+    'sein': ['eins', 'E~~s'],
+    'seins': ['eins', 'E~~s'],
+
+    'shit': ['teuch', 't9.Si'],
+
+    'soeur': ['reus', 'R9ss'],
+    'soeurs': ['reus', 'R9ss'],
+
+    'soirée': ['réssoi', 'Reswa'],
+    'soirées': ['réssois', 'Reswa'],
+
+    'toi': ['wat', 'wat'],
+    
+    'toubab': ['babtou', 'bab.tu~'],
+    'toubabs': ['babtous', 'bab.tu~'],
+    
+    'triper': ['pétri', 'pe.tRi'],
+    'tripé': ['pétri', 'pe.tRi'],
+    'tripée': ['pétri', 'pe.tRi'],
+    'tripés': ['pétri', 'pe.tRi'],
+    'tripées': ['pétri', 'pe.tRi'],
+
+    'truc': ['keutru', 'k@tRy'],
+    'trucs': ['keutru', 'k@tRy'],
+     
+    'vas-y': ['ziva', 'zi.va'],
+    
+    'voiture': ['turvoi', 'tyrvwa'],
+    'voitures': ['turvois', 'tyrvwa'],
 }
+
 
 verlan_re = dict()
 
