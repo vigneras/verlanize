@@ -12,7 +12,8 @@ LOGGER.setLevel(logging.DEBUG)
 # we use X-SAMPA instead of IPA, because IPA uses UTF-8 symbols that are hard 
 # to display in an editor
 verlan_words = {
-    'américain': ['cainri', '\kE~.Ri\\'], 
+    'américain': ['cainri', 'kE~.Ri'],
+    'arabe': ['rebeu', None],
     'brancher': ['chébrans', None],
     'branché': ['chébrans', None],
     'branchée': ['chébrans', None],
@@ -52,7 +53,7 @@ verlan_words = {
     'fête': ['teuf', None],
     'gentil': ['tigen', None],
     'gramme': ['meug', None],
-    'grave': ['veugra', None],
+    'grave': ['veugra', 'v@.gRa'],
     'herbe': ['beuh', None],
     'je ne sais pas': ['Ché ap', None],
     'joint': ['oinj', None],
@@ -63,8 +64,10 @@ verlan_words = {
     'mate': ['téma', None],
     'mater': ['téma', None],
     'mec': ['keum', None],
+    'mecs': ['keums', None],
     'merde': ['deumer', None],
     'moche': ['cheum', None],
+    'moches': ['cheums', None],
     'moi': ['wam', None],
     'monnaie': ['némo', None],
     'mouche': ['cheumou', None],
