@@ -9,137 +9,133 @@ import re
 LOGGER = logging.getLogger()
 LOGGER.setLevel(logging.DEBUG)
 
-# we use X-SAMPA instead of IPA, because IPA uses UTF-8 symbols that are hard 
+# we use X-SAMPA instead of IPA, because IPA uses UTF-8 symbols that are hard
 # to display in an editor
 verlan_words = {
     'américain': ['cainri', 'kE~.Ri'],
     'américains': ['cainris', 'kE~.Ri'],
-    
+
     'arabe': ['rebeu', 'R@.b2'],
     'arabes': ['rebeus', 'R@.b2'],
-    
+
     'brancher': ['chébrans', 'SebRA~'],
     'branché': ['chébrans', 'SebRA~'],
     'branchée': ['chébrans', 'SebRA~'],
     'branchées': ['chébrans', 'SebRA~'],
-    
+
     'bête': ['teubé', 't9be'],
     'bêtes': ['teubés', 't9be'],
-    
+
     'carotter': ['rot-ca', 'ROtka'],
     'carotté': ['rot-ca', 'ROtka'],
-    
+
     'chaud': ['auch', 'oS'],
     'chauds': ['auchs', 'oS'],
-    
+
     'cher': ['reuch', 'R2S'],
     'chers': ['reuchs', 'R2S'],
     'chère': ['reuchs', 'R2S'],
     'chères': ['reuchs', 'R2S'],
-    
+
     'chien': ['iench', 'jE~S'],
     'chiens': ['ienchs', 'jE~S'],
-    
+
     'choper': ['pécho', 'pe.SO'],
     'chopé': ['pécho', 'pe.SO'],
     'chopés': ['pécho', 'pe.SO'],
     'chopée': ['pécho', 'pe.SO'],
     'chopées': ['pécho', 'pe.SO'],
-    
+
     'cigarette': ['garetci', 'gaREtsi'],
     'cigarettes': ['garetci', 'gaREtsi'],
-    
+
     'cité': ['téci', 'te.si'],
     'cités': ['téci', 'te.si'],
-    
-    'comme ça': ['ça kom', 'sa kOm'],
-    
+
     'dingue': ['gueudin', 'g2dE~'],
     'dingues': ['gueudin', 'g2dE~'],
-    
+
     'disque': ['skeud', 'sk2d'],
     'disques': ['skeud', 'sk2d'],
-    
+
     'défoncer': ['fonsdé', 'fO~sde'],
     'défoncé': ['fonsdé', 'fO~sde'],
     'défoncés': ['fonsdé', 'fO~sde'],
     'défoncée': ['fonsdé', 'fO~sde'],
     'défoncées': ['fonsdé', 'fO~sde'],
-    
+
     'énervé': ['vénèr', 'venER'],
     'énervée': ['vénèr', 'venER'],
     'énervés': ['vénèr', 'venER'],
     'énervées': ['vénèr', 'venER'],
-    
+
     'femme': ['meuf', 'm9f'],
     'femmes': ['meufs', 'm9f'],
-    
+
     'flasher': ['chéfla', 'Seflaa'],
     'flashé': ['chéfla', 'Seflaa'],
     'flashée': ['chéfla', 'Seflaa'],
     'flashés': ['chéfla', 'Seflaa'],
     'flashées': ['chéfla', 'Seflaa'],
-    
+
     'flic': ['keuf', 'k9f'],
     'flics': ['keufs', 'k9f'],
-    
+
     'fou': ['ouf', 'uf'],
     'fous': ['oufs', 'uf'],
-    
+
     'français': ['céfran', 'se.fRA~'],
-    
+
     'frère': ['reuf', 'R9f'],
     'frères': ['reuf', 'R9f'],
-    
+
     'fumer': ['méfu', 'me.fy'],
     'fumé': ['méfu', 'me.fy'],
     'fumée': ['méfu', 'me.fy'],
     'fumés': ['méfu', 'me.fy'],
     'fumées': ['méfu', 'me.fy'],
-    
+
     'fête': ['teuf', 't9f'],
     'fêtes': ['teufs', 't9f'],
-    
+
     'gentil': ['tigen', 'tiZA~'],
     'gentils': ['tigens', 'tiZA~'],
-    
+
     'gramme': ['meug', 'm3g'],
     'grammes': ['meug', 'm3g'],
-    
+
     'grave': ['veugra', 'v@.gRa'],
     'graves': ['veugra', 'v@.gRa'],
-    
+
     'herbe': ['beuh', 'b2'],
     'herbes': ['beuh', 'b2'],
-    
-    'je ne sais pas': ['Ché ap', 'Se Ap'],
-    
+
     'joint': ['oinj', 'wE~Z'],
     'joints': ['oinj', 'wE~Z'],
-    
+
     'juif': ['feuj', 'f2Z~'],
     'juifs': ['feuj', 'f2Z~'],
-    
+
     'louche': ['cheulou', 'S@.luu'],
     'louches': ['cheulou', 'S@.luu'],
-    
+
     'lourd': ['relou', 'R@.lu'],
     'lourds': ['relous', 'R@.lu'],
     'lourde': ['relou', 'R@.lu'],
     'lourdes': ['relous', 'R@.lu'],
-    
+
     'manger': ['géman', 'ZemA~'],
     'mangé': ['géman', 'ZemA~'],
     'mangés': ['géman', 'ZemA~'],
     'mangée': ['géman', 'ZemA~'],
     'mangées': ['géman', 'ZemA~'],
-    
+
     'mater': ['téma', 'tema'],
     'maté': ['téma', 'tema'],
     'matée': ['téma', 'tema'],
     'matés': ['téma', 'tema'],
     'matées': ['téma', 'tema'],
-    
+
     'mec': ['keum', 'k9m'],
     'mecs': ['keums', 'k9m'],
 
@@ -251,10 +247,10 @@ verlan_words = {
     'soirées': ['réssois', 'Reswa'],
 
     'toi': ['wat', 'wat'],
-    
+
     'toubab': ['babtou', 'bab.tu~'],
     'toubabs': ['babtous', 'bab.tu~'],
-    
+
     'triper': ['pétri', 'pe.tRi'],
     'tripé': ['pétri', 'pe.tRi'],
     'tripée': ['pétri', 'pe.tRi'],
@@ -263,15 +259,19 @@ verlan_words = {
 
     'truc': ['keutru', 'k@tRy'],
     'trucs': ['keutru', 'k@tRy'],
-     
-    'vas-y': ['ziva', 'zi.va'],
-    
+
     'voiture': ['turvoi', 'tyrvwa'],
     'voitures': ['turvois', 'tyrvwa'],
 }
 
+verlan_expr = {
+    'comme ça': ['ça kom', 'sa kOm'],
+
+    'je ne sais pas': ['ché ap', 'Se Ap'],
+}
 
 verlan_re = dict()
+
 
 def init():
     for word in verlan_words:
@@ -280,23 +280,42 @@ def init():
         # Normal case
         pattern = r'\b%s\b' % word
         prog = re.compile(pattern)
-        verlan_re[prog] = [verlan, x_sampa] 
-        
+        verlan_re[prog] = [verlan, x_sampa]
+
         # UPPER case
         pattern = r'\b%s\b' % word.upper()
         prog = re.compile(pattern)
         verlan_re[prog] = [verlan.upper(), x_sampa]
-        
+
         # Title case
         pattern = r'\b%s\b' % word.title()
         prog = re.compile(pattern)
         verlan_re[prog] = [verlan.title(), x_sampa]
 
+    for ex in verlan_expr:
+        verlan = verlan_expr[ex][0]
+        x_sampa = verlan_expr[ex][1]
+        # Normal case
+        pattern = r'\b%s\b' % ex
+        prog = re.compile(pattern)
+        verlan_re[prog] = [verlan, x_sampa]
+
+        # UPPER case
+        pattern = r'\b%s\b' % ex.upper()
+        prog = re.compile(pattern)
+        verlan_re[prog] = [verlan.upper(), x_sampa]
+
+        # Title case
+        # Only the first letter should be titleized in an expr.
+        pattern = r'\b%s\b' % (ex[0].upper() + ex[1:])
+        prog = re.compile(pattern)
+        verlan_re[prog] = [verlan[0].upper() + verlan[1:], x_sampa]
+
 
 def default_observer(match, verlan, x_sampa):
     LOGGER.debug("Text: %s", match.string)
     return ''.join([match.string[:match.start()],
-                    verlan, 
+                    verlan,
                     match.string[match.end():]])
 
 
@@ -312,6 +331,7 @@ def find_matching(matcher, verlanized, string, prog):
         temp = matcher(match, verlan_re[prog][0], verlan_re[prog][1])
 
     return temp
+
 
 def verlanize(text, matcher=default_observer):
     if text is None:
