@@ -105,6 +105,14 @@ class TestVerlanizeCase(unittest.TestCase):
         self.assertEqual('Et bien, ché ap comment te dire', result)
         self.assertEqual(1, len(words))
 
+# TODO: implement this use case
+#     def test_voyel_conson_normal(self):
+#         result, words = verlanize.verlanize("L'américain à Paris")
+#         self.assertIsNotNone(result)
+#         self.assertIsNotNone(words)
+#         self.assertEqual('Le cainri à Paris', result)
+#         self.assertEqual(1, len(words))
+
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
