@@ -84,6 +84,8 @@ verlan_words = {
     'fou': ['ouf', 'uf'],
     'fous': ['oufs', 'uf'],
 
+    'foot': ['teufoo', 't2.fu'],
+
     'français': ['céfran', 'se.fRA~'],
 
     'frère': ['reuf', 'R9f'],
