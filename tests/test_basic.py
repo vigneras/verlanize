@@ -105,6 +105,15 @@ class TestVerlanizeCase(unittest.TestCase):
         self.assertEqual('Et bien, ché ap comment te dire', result)
         self.assertEqual(1, len(words))
 
+    def test_long_test(self):
+        N = 1000
+        txt = "Un américain, un autre américain, un arabe et un planqué vont à Paris. " * N
+        result, words = verlanize.verlanize(txt)
+        self.assertIsNotNone(result)
+        self.assertIsNotNone(words)
+        self.assertEqual('Un cainri, un autre cainri, un rebeu et un képlan vont à Paris. ' * N, result)
+        self.assertEqual(4 * N, len(words))
+
 # TODO: implement this use case
 #     def test_voyel_conson_normal(self):
 #         result, words = verlanize.verlanize("L'américain à Paris")
