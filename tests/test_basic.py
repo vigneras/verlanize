@@ -23,7 +23,7 @@ class TestVerlanizeCase(unittest.TestCase):
         result, words = verlanize.verlanize(None)
         self.assertIsNone(result)
         self.assertIsNotNone(words)
-        self.assertEquals(0, len(words))
+        self.assertEqual(0, len(words))
 
     def test_simple_word(self):
         result, words = verlanize.verlanize('femme')
