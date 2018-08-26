@@ -1,0 +1,42 @@
+Un américain, un arabe et un francais sont à Paris.
+
+D={re_1:sub_1, re_2:sub_2, ... re_i:sub_i, .., re_n:sub_n }
+T="tot re_1 tto re_2 ototo"
+F
+
+-> F(T, pos_1=4, re_1, sub_1) -> r_1=(re_1, pos=4, sub_1)
+-> F(T, pos_2=13, re_2, sub_2) -> r_2=(re_2, pos=13, sub_2)
+
+r=merge(T, r_1, r_2, ...)
+
+def merge(T, R):
+    result_list = []
+    next = 0
+    for r in R:
+    	 index = r[0]
+	 sub = r[1]
+	 
+
+
+Step_0th:
+  result_list = []
+
+Step i_th:
+
+   result_list = ['Un ', 'cairi', T[next:r_i.pos], r_i.sub, T[r_i.pos+len(r_i.re)]
+   next += r_i.pos+len(r_i.re) 
+
+Last step:
+
+   result_list = ['Un ', 'cairi', ', un ', 'reubeu', ' et un ', 'céfra', ' sont à Paris']
+
+   
+
+   ''.join(result_list)
+
+
+
+
+
+
+
